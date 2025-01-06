@@ -1,3 +1,8 @@
+
+# Título do Projeto
+
+Uma breve descrição sobre o que esse projeto faz e para quem ele é
+
 # Windows Task Scheduler Sample
 
 Este projeto foi desenvolvido para possibilitar a execução de aplicações no Windows a partir do usuário atualmente logado no sistema. Ele utiliza a biblioteca `Microsoft.Win32.TaskScheduler` para agendar tarefas no TaskScheduler do Windows, com suporte tanto para ambientes locais quanto para máquinas virtuais (VMs).
@@ -41,14 +46,13 @@ taskService.CreateTaskSchedulerAsCurrentWindowsUser(
     arguments: "--run"
 );
 
-Console.WriteLine("Tarefa agendada com sucesso!");```
+Console.WriteLine("Tarefa agendada com sucesso!");
+```
 
-#### **Exemplo de Uso TaskRun**:
-
+### **Exemplo de Uso TaskRun**:
 ```using windows_task_schedule_sample;
 
 var taskService = new TaskSchedulerService();
 
-taskService.TaskRun(taskToRun: "MyAppTask");```
-
-até mais!
+taskService.TaskRun(taskToRun: "MyAppTask");
+```
