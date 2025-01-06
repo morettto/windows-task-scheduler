@@ -1,5 +1,5 @@
 
-# Título do Projeto
+# Execute windows apps as logged session user
 
 Uma breve descrição sobre o que esse projeto faz e para quem ele é
 
