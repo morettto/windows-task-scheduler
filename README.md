@@ -1,58 +1,53 @@
-
-# Execute windows apps as logged session user
-
-Uma breve descrição sobre o que esse projeto faz e para quem ele é
-
 # Windows Task Scheduler Sample
 
-Este projeto foi desenvolvido para possibilitar a execução de aplicações no Windows a partir do usuário atualmente logado no sistema. Ele utiliza a biblioteca `Microsoft.Win32.TaskScheduler` para agendar tarefas no TaskScheduler do Windows, com suporte tanto para ambientes locais quanto para máquinas virtuais (VMs).
+This project was developed to make it possible to run applications in Windows from the user currently logged into the system. It uses the `Microsoft.Win32.TaskScheduler` library to schedule tasks in the Windows TaskScheduler, with support for both local environments and virtual machines (VMs).
 
 ---
 
-## 📋 Propósito do Projeto
+## 📋 Purpose of the Project
 
-O objetivo principal é permitir que aplicações sejam executadas automaticamente no contexto do usuário logado, garantindo permissões adequadas e um ambiente configurado para o programa ou script. 
+The main goal is to allow applications to run automatically in the context of the logged-in user, ensuring proper permissions and a configured environment for the program or script. 
 
-Casos de uso incluem:
-- Automação de tarefas repetitivas.
-- Execução de scripts de RPA (Robotic Process Automation).
-- Agendamento programado de execução de aplicações.
+Use cases include:
+- Automation of repetitive tasks.
+- Execution of RPA (Robotic Process Automation) scripts.
+- Scheduling the execution of applications.
 
 ---
 
-## 🚀 Recursos
+## 🚀 Features
 
-### 1. **Criar Tarefa Agendada**
-O método `CreateTaskSchedulerAsCurrentWindowsUser` permite criar uma tarefa agendada que será executada no contexto do usuário atualmente logado.
+### 1. **Create Scheduled Task**
+The `CreateTaskSchedulerAsCurrentWindowsUser` method allows you to create a scheduled task that will be executed in the context of the currently logged in user.
 
-#### **Parâmetros**:
-- `exePath` (string): Caminho completo do executável ou script a ser executado.
-- `rpaWorkingDirectory` (string): Diretório de trabalho do programa/script.
-- `taskName` (string): Nome da tarefa.
-- `startBoundary` (DateTime): Data e hora de início da tarefa.
-- `arguments` (string): Argumentos opcionais para o programa/script via cli.
+#### **Parameters**:
+- `exePath` (string): Full path of the executable or script to be run.
+- `rpaWorkingDirectory` (string): Working directory of the program/script.
+- `taskName` (string): Name of the task.
+- `startBoundary` (DateTime): Start date and time of the task.
+- `arguments` (string): Optional arguments for the program/script via cli.
 
-#### **Exemplo de Uso CreateTaskSchedulerAsCurrentWindowsUser**:
+#### **Exemplo de uso CreateTaskSchedulerAsCurrentWindowsUser**:
 ```csharp
-using windows_task_schedule_sample;
+usando windows_task_schedule_sample;
 
 var taskService = new TaskSchedulerService();
 
 taskService.CreateTaskSchedulerAsCurrentWindowsUser(
-    exePath: @"C:\Program Files\MyApp\myapp.exe",
-    rpaWorkingDirectory: @"C:\Program Files\MyApp",
-    taskName: "MyAppTask",
+    exePath: @“C:\Program Files\MyApp\myapp.exe”,
+    rpaWorkingDirectory: @“C:\Program Files\MyApp”,
+    taskName: “MyAppTask”,
     startBoundary: DateTime.Now.AddMinutes(10),
-    arguments: "--run"
+    argumentos: “--run”
 );
 
-Console.WriteLine("Tarefa agendada com sucesso!");
+Console.WriteLine(“Tarefa agendada com sucesso!”);
 ```
 
 ### **Exemplo de Uso TaskRun**:
-```using windows_task_schedule_sample;
+```usando windows_task_schedule_sample;
 
 var taskService = new TaskSchedulerService();
 
-taskService.TaskRun(taskToRun: "MyAppTask");
+taskService.TaskRun(taskToRun: “MyAppTask”);
 ```
